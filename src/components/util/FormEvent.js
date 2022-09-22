@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "./FormStyled";
+import { Link } from "react-router-dom";
 
 export const FormEvent = () => {
+  const usersData = [
+    {
+      id: 1,
+      eventName: "",
+      hostName: "",
+      eventStart: "",
+      eventEnd: "",
+      locationName: "",
+      avatar: "",
+    },
+  ];
+  const [data, setData] = useState(usersData);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setData({ ...data, [name]: value });
+    console.log(data);
+  };
   return (
     <Form>
       <form class="register-form">
@@ -14,6 +33,8 @@ export const FormEvent = () => {
           type="text"
           placeholder="Event Name"
           name="eventName"
+          onChange={handleInputChange}
+          value={data.eventName}
         />
         {/* Uncomment the next line to show the error message */}
         {/* <span id="first-name-error">Please enter a first name</span> */}
@@ -23,7 +44,9 @@ export const FormEvent = () => {
           class="form-field"
           type="text"
           placeholder="Host Name"
-          name="HostName"
+          name="hostName"
+          onChange={handleInputChange}
+          value={data.hostName}
         />
         {/* Uncomment the next line to show the error message */}
         {/* <span id="last-name-error">Please enter a last name</span> */}
@@ -32,20 +55,22 @@ export const FormEvent = () => {
           id="start"
           class="form-field"
           type="date"
-          name="event-start"
-          value="2018-07-22"
-          min="2018-01-01"
-          max="2018-12-31"
+          name="eventStart"
+          min="2022-01-01"
+          max="2022-12-31"
+          onChange={handleInputChange}
+          value={data.eventStart}
         ></input>
         <label for="start">End date:</label>
         <input
           id="end"
           class="form-field"
           type="date"
-          name="event-end"
-          value="2018-07-22"
+          name="eventEnd"
           min="2022-01-01"
           max="2022-12-31"
+          onChange={handleInputChange}
+          value={data.eventEnd}
         ></input>
         <label for="Location-name">Event Name:</label>
         <input
@@ -53,7 +78,9 @@ export const FormEvent = () => {
           class="form-field"
           type="text"
           placeholder="Location Name"
-          name="eventName"
+          name="locationName"
+          onChange={handleInputChange}
+          value={data.locationName}
         />
         <label for="avatar">Choose a profile picture:</label>
 
@@ -63,11 +90,15 @@ export const FormEvent = () => {
           type="file"
           name="avatar"
           accept="image/png, image/jpeg"
+          onChange={handleInputChange}
+          value={data.avatar}
         />
 
-        <button class="form-field" type="submit">
-          Create Event
-        </button>
+        <Link to={"/event"}>
+          <button  class="form-field" type="submit"> 
+            Next
+          </button>
+        </Link>
       </form>
     </Form>
   );

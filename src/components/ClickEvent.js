@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const ClickEvent = () => {
   return (
-    <Link to={"/event"}>
+    <Link to={"/create"}>
       {" "}
       <Button>Create My Event</Button>
     </Link>
