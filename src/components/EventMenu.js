@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import { FormEvent } from "./util/FormEvent";
 
 export const EventMenu = () => {
   return (
-    <div>EventMenu</div>
-  )
-}
+    <div>
+      <FormEvent />
+    </div>
+  );
+};

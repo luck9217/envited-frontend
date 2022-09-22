@@ -1,8 +1,12 @@
-import React from 'react'
-import Button from './util/ButtonEvent'
+import React from "react";
+import Button from "./util/ButtonEvent";
+import { Link } from "react-router-dom";
 
 export const ClickEvent = () => {
   return (
-    <Button>Create My Event</Button>
-  )
-}
+    <Link to={"/event"}>
+      {" "}
+      <Button>Create My Event</Button>
+    </Link>
+  );
+};
